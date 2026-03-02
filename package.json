@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsc && node scripts/build.js",
-    "prepublishOnly": "yarn build"
+    "prepare": "rm -rf dist && tsc && node scripts/build.js"
   },
   "repository": {
     "type": "git",
