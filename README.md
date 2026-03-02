@@ -6,18 +6,20 @@ This package supports TypeScript out of the box.
 
 ### Setup
 
-Install this package:
+This package is maintained by ForceTherapeutics and is installed via git. Install this package:
 
 ```bash
 # npm
-npm install --save-dev cypress-mailhog
+npm install --save-dev git+https://github.com/ForceTherapeutics/cypress-mailhog.git
 
 # yarn
-yarn add --dev cypress-mailhog
+yarn add --dev git+https://github.com/ForceTherapeutics/cypress-mailhog.git
 
 # pnpm
-pnpm add -D cypress-mailhog
+pnpm add -D git+https://github.com/ForceTherapeutics/cypress-mailhog.git
 ```
+
+TypeScript will be automatically compiled during installation.
 
 Include this package into your Cypress command file:
 
@@ -329,7 +331,9 @@ cy
 
 ### Building the Package
 
-This package is written in TypeScript. The compiled `dist/` directory is committed to the repository.
+This package is written in TypeScript and is built on installation via the `prepare` lifecycle script.
+
+For local development, you can manually compile TypeScript to JavaScript:
 
 ```bash
 # Compile TypeScript to JavaScript
@@ -338,7 +342,7 @@ yarn build
 
 The compiled output is stored in `dist/`.
 
-**Note:** When publishing to npm, the `prepublishOnly` script runs automatically and builds the package. The compiled `dist/` directory is committed to the repository, so installing from git works without any build step.
+**Note:** The `dist/` directory is not committed to the repository. When installing this package via git, the TypeScript code is automatically compiled during installation via the `prepare` script. This ensures that consuming projects always have the compiled JavaScript available, while keeping the repository clean of build artifacts.
 
 ### Start Local Test Server
 
