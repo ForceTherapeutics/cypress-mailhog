@@ -10,7 +10,11 @@ const distDecl = fs.readFileSync(
   "utf8",
 );
 
-const merged = typesDecl + "\n\n" + distDecl;
+const cleanedDistDecl = distDecl
+  .replace(/^export\s*\{\s*\};\s*$/m, "")
+  .trimEnd();
+
+const merged = typesDecl + "\n\n" + cleanedDistDecl;
 
 fs.writeFileSync(path.join(__dirname, "../dist/index.d.ts"), merged);
 
